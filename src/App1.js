@@ -1,8 +1,9 @@
-import React from 'react'
-export default function App1(props) {
+import React from "react";
+
+export default function App1() {
   return (
-    <div style={{ backgroundColor:'pink' , textAlign:'center' , textstyle:'bold' }}>
-        {props.name} - {props.age}
+    <div>
+      <h1>App1</h1>
     </div>
   );
 }

@@ -1,30 +1,31 @@
-import React, { useState } from "react";
 
+import React from "react";
+import { useState } from "react";
 export default function App6() {
-  const [text, setText] = useState("");
-  const [items, setItems] = useState([]);
-
-  const handleClick = () => {
-    setItems([...items, text]);
-    setText("");
+  const [hobby, setHobby] = useState([]);
+  const [text, setText] = useState();
+  const handleSubmit = () => {
+    setHobby([...hobby, text]);
   };
-
+  const handleDelete = (value) => {
+    setHobby(hobby.filter((element) => element != value));
+  };
   return (
-    <div align="center">
-      <p>
-        <input
-          type="text"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        ></input>
-      </p>
-      <button onClick={handleClick}>Add</button>
+    <div>
+      <input
+        type="text"
+        placeholder="Enter your hobby"
+        onChange={(event) => setText(event.target.value)}
+      ></input>
+      <button onClick={handleSubmit}>Add</button>
       <hr></hr>
-      <div>
-        {items.map((item, index) => (
-          <p key={index}>{item}</p>
+      {hobby &&
+        hobby.map((value, index) => (
+          <li key={index}>
+            {value}
+            <button onClick={() => handleDelete(value)}>Delete</button>
+          </li>
         ))}
-      </div>
     </div>
   );
 }
